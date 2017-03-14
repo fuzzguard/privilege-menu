@@ -1,7 +1,7 @@
 === Privilege Menu ===
 Contributors: fuzzguard
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G8SPGAVH8RTBU
-tags: nav menu, nav menus, menus, menu
+tags: nav menu, nav menus, menus, menu, roles, restriction, permission, member, login, logout
 Requires at least: 3.8
 Tested up to: 4.7.3
 Stable tag: 1.8.2
