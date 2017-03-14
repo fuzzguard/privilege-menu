@@ -265,31 +265,31 @@ class Priv_Menu_Walker extends Walker_Nav_Menu {
 
                     <input type="hidden" class="nav-menu-id" value="<?php echo $item->ID ;?>" />
 
-                    <div class="logged-input-holder" style="float: left; width: 35%;">
+                    <div class="logged-input-holder" style="float: left; width: 40%;">
                         <input type="radio" class="nav-menu-logged-in-out" name="priv-menu-logged-in-out[<?php echo $item->ID ;?>]" id="priv_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" onclick="jQuery('#priv-menu-access-role-div-<?php echo $item->ID ;?>').hide()"/>
                         <label for="priv_menu_logged_out-for-<?php echo $item->ID ;?>">
-                            <?php _e( 'Logged Out Users', 'privilege-menu'); ?>
+                            <?php _e( 'Logged Out', 'privilege-menu'); ?>
                         </label>
                     </div>
 
-                    <div class="logged-input-holder" style="float: left; width: 35%;">
+                    <div class="logged-input-holder" style="float: left; width: 40%;">
                         <input type="radio" class="nav-menu-logged-in-out" name="priv-menu-logged-in-out[<?php echo $item->ID ;?>]" id="priv_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" onclick="jQuery('#priv-menu-access-role-div-<?php echo $item->ID ;?>').show();"/>
                         <label for="priv_menu_logged_in-for-<?php echo $item->ID ;?>">
-                            <?php _e( 'Logged In Users', 'privilege-menu'); ?>
+                            <?php _e( 'Logged In', 'privilege-menu'); ?>
                         </label>
                     </div>
 
-                    <div class="logged-input-holder" style="float: left; width: 30%;">
+                    <div class="logged-input-holder" style="float: left; width: 20%;">
                         <input type="radio" class="nav-menu-logged-in-out" name="priv-menu-logged-in-out[<?php echo $item->ID ;?>]" id="priv_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" onclick="jQuery('#priv-menu-access-role-div-<?php echo $item->ID ;?>').hide();"/>
                         <label for="priv_menu_by_role-for-<?php echo $item->ID ;?>">
-                            <?php _e( 'All Users', 'privilege-menu'); ?>
+                            <?php _e( 'All', 'privilege-menu'); ?>
                         </label>
                     </div>
 
                 </div>
 
                 <div class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0;<?php if( $logged_in_out != 'in' ) { echo ' display: none;'; }?>" id="priv-menu-access-role-div-<?php echo $item->ID ;?>">
-                    <span class="description"><?php _e( "Access Role", 'privilege-menu'); ?>: <?php _e( "leave all unchecked to allow all logged in users to see the menu.", 'privilege-menu' ); ?></span>
+                    <span class="description" style="display: block;"><?php _e( "Access Role", 'privilege-menu'); ?>: <?php _e( "leave all unchecked to allow all logged in users to see the menu.", 'privilege-menu' ); ?></span>
                     <br />
 
                     <?php
@@ -302,7 +302,7 @@ class Priv_Menu_Walker extends Walker_Nav_Menu {
                         
                         ?>
 
-                        <div class="role-input-holder" style="float: left; width: 33.3%; margin: 2px 0;">
+                        <div class="role-input-holder" style="display: block; float: left; width: 30%; margin: 2px 2px; white-space: nowrap; text-overflow: ellipsis;">
                         <input type="checkbox" name="priv-menu-role[<?php echo $item->ID ;?>][<?php echo $role; ?>]" id="priv_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>" <?php echo $checked; ?> value="<?php echo $role; ?>" />
                         <label for="priv_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>">
                         <?php echo esc_html( $name ); ?>

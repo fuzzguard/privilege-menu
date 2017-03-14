@@ -3,7 +3,7 @@
  * Plugin Name: Privileged Menu
  * Plugin URI: http://www.fuzzguard.com.au/plugins/privileged-menu
  * Description: Used to provide Menu display to users based on their Privilege Level (User roles or Logged In/Logged Out)
- * Version: 1.8.1
+ * Version: 1.8.2
  * Author: Benjamin Guy
  * Author URI: http://www.fuzzguard.com.au
  * Text Domain: privilege-menu
@@ -52,6 +52,13 @@ include('customWalker.php');
 * @since 0.1
 */
 class privMenu {
+	
+	/**
+	 * Stores the option string name
+	 * @var string $privMenuOption
+	 * @since 1.8.2
+	 */
+	public $privMenuOption = '_priv_menu_role';
 
         /**
         * Loads localization files for each language
@@ -71,7 +78,7 @@ class privMenu {
 	function remove_menu_items( $items, $menu, $args ) {
 
     		foreach ( $items as $key => $item ) {
-				$meta_data = get_post_meta( $item->ID, '_priv_menu_role', true);
+				$meta_data = get_post_meta( $item->ID, $this->privMenuOption, true);
 
 				// Handle the old format of the meta data.
 				if( !is_array( $meta_data ) ) {
@@ -174,9 +181,9 @@ class privMenu {
         }
 
 	if ( $saved_data['roles'] != '' || $saved_data['users'] != '' ) {
-            update_post_meta( $menu_item_db_id, '_priv_menu_role', $saved_data );
+            update_post_meta( $menu_item_db_id, $this->privMenuOption, $saved_data );
         } else {
-            delete_post_meta( $menu_item_db_id, '_priv_menu_role' );
+            delete_post_meta( $menu_item_db_id, $this->privMenuOption );
         }
     }
 

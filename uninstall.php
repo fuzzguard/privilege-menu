@@ -14,13 +14,18 @@ if ( ! function_exists( 'is_admin' ) ) {
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) 
     exit();
 
-$option_name = '_priv_menu_role';
+require('privMenu.php');
 
-//delete_option( $option_name );
+/**
+ * Initialize privWidget class
+ * @var Ambiguous $myprivWidgetClass
+ * @since 1.7.1
+ */
+$myprivMenuClass = new privMenu();
+
+$option_name = $myprivMenuClass->privMenuOption;
 
 delete_post_meta_by_key( $option_name );
 
-// For site options in multisite
-//delete_site_option( $option_name );  
 
 ?>

@@ -3,8 +3,8 @@ Contributors: fuzzguard
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G8SPGAVH8RTBU
 tags: nav menu, nav menus, menus, menu
 Requires at least: 3.8
-Tested up to: 4.7
-Stable tag: 1.8.1
+Tested up to: 4.7.3
+Stable tag: 1.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,12 @@ http://core.trac.wordpress.org/ticket/18584
 5. This is a view of a menu item you could select only to be viewable for administrators.
 
 == Changelog ==
+
+= 1.8.2 =
+* Moved '_priv_menu_role' option string into 'public $privMenuOption' to allow access from uninstall.php
+* Changed all references to '_priv_menu_role' string to access $this->privMenuOption (For Conformity)
+* Fixed styling for text in widget admin panel
+* Fixed styling for text in widget admin panel in responsive mode.
 
 = 1.8.1 =
 * Tested with version 4.7 of WordPress
