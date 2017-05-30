@@ -116,7 +116,7 @@ class privMenu {
 							}
 
 							// If we haven't match a user role to the current user and we have user roles set, make this menu item invisible.
-							if( !$role_match && $role_count > 0 ) { $visible = false; }
+							if( !$role_match && $role_count > 0 )  $visible = false; 
 						}
 						else {
 							$visible = false;
@@ -159,14 +159,12 @@ class privMenu {
         $allowed_roles = apply_filters( 'priv_menu_roles', $wp_roles->role_names );
 
         // verify this came from our screen and with proper authorization.
-        if ( ! isset( $_POST['priv-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['priv-menu-role-nonce'], 'priv-menu-nonce-name' ) )
-            return;
+        if ( ! isset( $_POST['priv-menu-role-nonce'] ) || ! wp_verify_nonce( $_POST['priv-menu-role-nonce'], 'priv-menu-nonce-name' ) ) return;
 
 	$saved_data = array( 'users' => '', 'roles' => '');
 
-        if ( isset( $_POST['priv-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['priv-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out') ) ) {
-              $saved_data['users'] = $_POST['priv-menu-logged-in-out'][$menu_item_db_id];
-        }
+        if ( isset( $_POST['priv-menu-logged-in-out'][$menu_item_db_id]  )  && in_array( $_POST['priv-menu-logged-in-out'][$menu_item_db_id], array( 'in', 'out') ) )  
+		$saved_data['users'] = $_POST['priv-menu-logged-in-out'][$menu_item_db_id];
 
 	if ( isset( $_POST['priv-menu-role'][$menu_item_db_id] ) ) {
             $custom_roles = array();
@@ -175,9 +173,7 @@ class privMenu {
                 if ( array_key_exists ( $role, $allowed_roles ) ) $custom_roles[] = $role;
             }
 
-            if ( ! empty ( $custom_roles ) ) {
-		 $saved_data['roles'] = $custom_roles;
-	    }
+            if ( ! empty ( $custom_roles ) ) $saved_data['roles'] = $custom_roles;
         }
 
 	if ( $saved_data['roles'] != '' || $saved_data['users'] != '' ) {
@@ -220,7 +216,6 @@ function fuzzguard_plugin_manager_register_required_plugins() {
                         'slug'      => 'privilege-widget',
                         'required'  => false,
                 ),
-
         );
 
         /*
