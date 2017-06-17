@@ -5,7 +5,7 @@
  *
  * @package privilege-menu
  * @since 1.0
- * @updated 1.8
+ * @updated 1.8.3
  * @uses Walker_Nav_Menu
  */
 
@@ -261,8 +261,8 @@ class Priv_Menu_Walker extends Walker_Nav_Menu {
 
                 <div class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 10px 0px; padding: 5px 0px; overflow: hidden; border-bottom: 1px solid #DDDDDD; border-top: 1px solid #DDDDDD;">
                     <span class="description"><?php _e( 'User Restrictions', 'privilege-menu' ); ?></span>
-                    <br />
-
+                    <br>
+					<br>
                     <input type="hidden" class="nav-menu-id" value="<?php echo $item->ID ;?>" />
 
                     <div class="logged-input-holder" style="float: left; width: 40%;">

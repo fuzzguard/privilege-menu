@@ -3,7 +3,7 @@
  * Plugin Name: Privileged Menu
  * Plugin URI: http://www.fuzzguard.com.au/plugins/privileged-menu
  * Description: Used to provide Menu display to users based on their Privilege Level (User roles or Logged In/Logged Out)
- * Version: 1.8.2
+ * Version: 1.8.3
  * Author: Benjamin Guy
  * Author URI: http://www.fuzzguard.com.au
  * Text Domain: privilege-menu

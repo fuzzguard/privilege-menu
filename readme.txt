@@ -3,8 +3,8 @@ Contributors: fuzzguard
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G8SPGAVH8RTBU
 tags: nav menu, nav menus, menus, menu, roles, restriction, permission, member, login, logout
 Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 1.8.2
+Tested up to: 4.8
+Stable tag: 1.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,9 @@ http://core.trac.wordpress.org/ticket/18584
 5. This is a view of a menu item you could select only to be viewable for administrators.
 
 == Changelog ==
+
+= 1.8.3 =
+* Added extra line break between 'User Restrictions' and options to improve readability
 
 = 1.8.2 =
 * Moved '_priv_menu_role' option string into 'public $privMenuOption' to allow access from uninstall.php
