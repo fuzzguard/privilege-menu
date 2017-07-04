@@ -3,8 +3,8 @@
  * Plugin Name: Privileged Menu
  * Plugin URI: http://www.fuzzguard.com.au/plugins/privileged-menu
  * Description: Used to provide Menu display to users based on their Privilege Level (User roles or Logged In/Logged Out)
- * Version: 1.8.3
- * Author: Benjamin Guy
+ * Version: 1.8.4
+ * Author: <a href="http://www.fuzzguard.com.au/"><strong>Benjamin Guy</strong></a>
  * Author URI: http://www.fuzzguard.com.au
  * Text Domain: privilege-menu
  * License: GPL2
@@ -74,13 +74,13 @@ class privMenu {
     	/**
      	* Removes items from the menu displayed to the user if that menu item has been denied access to them in the admin panel
      	* @since 0.2
+		* @updated: 1.8.4
      	*/
 	function remove_menu_items( $items, $menu, $args ) {
 
     		foreach ( $items as $key => $item ) {
 				$meta_data = get_post_meta( $item->ID, $this->privMenuOption, true);
 
-				// Handle the old format of the meta data.
 				if( !is_array( $meta_data ) ) {
 					$temp = $meta_data;
 					$meta_data = array();
@@ -95,19 +95,14 @@ class privMenu {
 						$meta_data['roles'][] = 'administrator';
 					case 'in' :
 						if( is_user_logged_in() ) {
-							// By default assume a menu with the "logged in" user resitriction is visible when a user is logged in.
 							$visible = true;
 
-							// Setup for matching of roles if they exist.
 							$role_match = false;
 							$role_count = 0;
 
-							// Check to see if we have an array of roles or not.
 							if ( is_array( $meta_data['roles'] ) ) {
-								// Count the number of roles we have to check.
 								$role_count = count( $meta_data['roles'] );
 
-								// Loop through each role and check to see if this user has it.
 								foreach( $meta_data['roles'] as $role ) {
 									if ( current_user_can( $role ) ) {
 										$role_match = true;
@@ -115,7 +110,6 @@ class privMenu {
 								}
 							}
 
-							// If we haven't match a user role to the current user and we have user roles set, make this menu item invisible.
 							if( !$role_match && $role_count > 0 )  $visible = false; 
 						}
 						else {
@@ -130,8 +124,7 @@ class privMenu {
 						break;
           		}
 
-          		// add filter to work with plugins that don't use traditional roles
-          		$visible = apply_filters( 'nav_menu_roles_item_visibility', $visible, $item );
+          		$visible = apply_filters( 'priv_menu_visibility', $visible, $item );
 
           		if ( ! $visible ) unset( $items[$key] ) ;
     		}
